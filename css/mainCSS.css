@@ -1,0 +1,54 @@
+/* CSS Document */
+@font-face{
+	font-family:setofont;
+	src:url(../font/setofont.ttf);
+}
+body{
+	font-family:setofont;
+	font-size:20px;
+	color:#FFFFFF;
+	/*background-image:url(../img/Colors-Checkout-Process.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+	background-size:cover;*/
+}
+a{
+	outline:none;
+}
+div img{
+	width:100%;
+}
+.h60{
+	height:60px;
+}
+.h20{
+	height:20px;
+}
+th{
+	width:50%;
+}
+.nav-link{
+	transition:background-color 1s;
+	color:#FFF;
+}
+.bg-black{
+	background-color:#000000;
+}
+hr.hr-White {
+	border-top: 4px dashed #fff;
+}
+hr.hr-table{
+	border-top: 2px solid rgba(255,255,255,0.70);
+	margin-top:0px;
+	margin-bottom:0px;
+	
+}
+.item-num{
+	text-indent:1em;
+	font-weight:bolder;
+}
+
+#myCanvas{
+	position:fixed;
+	z-index:-1;
+}

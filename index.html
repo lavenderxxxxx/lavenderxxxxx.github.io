@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<title>Line pic</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale =0.8,maximum-scale=2.0,user-scalable=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/mainCSS.css">
+</head>
+<body class="bg-black">
+
+<canvas id="myCanvas">canvas</canvas>
+
+<nav class="navbar navbar-expand-sm fixed-top bg-black justify-content-center h60">
+  <div class="nav nav-pills col-sm-12 col-md-4 justify-content-around" id="nav-tab" role="tablist"> <a class="nav-link active" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">首頁</a> <a class="nav-link" data-toggle="pill" href="#pills-item" role="tab" aria-controls="pills-item" aria-selected="false">項目</a> <a class="nav-link" data-toggle="pill" href="#pills-about" role="tab" aria-controls="pills-about" aria-selected="false">關於</a> </div>
+</nav>
+<div class="h60"></div>
+<div class="tab-content" id="pills-tabContent"> 
+  <!-- Home page content    ↓↓↓↓  -->
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+    <div id="homeCarousel" class="carousel slide jumbotron-fluid" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#homeCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#homeCarousel" data-slide-to="1"></li>
+        <li data-target="#homeCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active"> <img class="d-none d-md-block" src="img/img-test-w.jpg" alt="slide wide"> <img class="d-sm-block d-md-none" src="img/img-test-h.jpg" alt="slide high"> </div>
+        <div class="carousel-item"> <img class="d-none d-md-block" src="img/img-test-w.jpg" alt="slide wide"> <img class="d-sm-block d-md-none" src="img/img-test-h.jpg" alt="slide high"> </div>
+        <div class="carousel-item"> <img class="d-none d-md-block" src="img/img-test-w.jpg" alt="slide wide"> <img class="d-sm-block d-md-none" src="img/img-test-h.jpg" alt="slide high"> </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="h60"></div>
+      <div class="row">
+        <div class="col-sm-8"> <img src="img/img-test-w.jpg" class="img-fluid" alt="">
+          <hr class="d-sm-none">
+        </div>
+        <div class="col-sm-4">
+          <h2>TITLE HEADING</h2>
+          <h5>Title description, Dec 7, 2017</h5>
+          <p>Some text..</p>
+          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+        </div>
+      </div>
+      <hr class="hr-White">
+      <div class="row">
+        <div class="col-sm-4 order-2 order-sm-1">
+          <h2>TITLE HEADING</h2>
+          <h5>Title description, Dec 7, 2017</h5>
+          <p>Some text..</p>
+          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+        </div>
+        <div class="col-sm-8 order-1 order-sm-2"> <img src="img/img-test-w.jpg" class="img-fluid" alt="">
+          <hr class="d-sm-none">
+        </div>
+      </div>
+      <hr class="hr-White">
+      <div class="row">
+        <div class="col-sm-8"> <img src="img/img-test-w.jpg" class="img-fluid" alt="">
+          <hr class="d-sm-none">
+        </div>
+        <div class="col-sm-4">
+          <h2>TITLE HEADING</h2>
+          <h5>Title description, Dec 7, 2017</h5>
+          <p>Some text..</p>
+          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+        </div>
+      </div>
+      <div class="h60"></div>
+    </div>
+  </div>
+  <!-- Items page content   ↓↓↓↓  -->
+  <div class="tab-pane fade" id="pills-item" role="tabpanel" aria-labelledby="pills-item-tab">
+    <div class="container">
+      <div class="row">
+        <div class="col"></div>
+        <!-- Center col ↓↓↓↓  -->
+        <div class="col-sm-12 col-md-8 col-lg-6">
+          <div class="h20"></div>
+          
+          <div class="d-flex justify-content-center">
+           <input type="text" class="form-control mr-2" id="searchText" placeholder="快速搜尋" onKeyDown="if (event.keyCode == 13){
+		searchItem();
+	}">
+			<button class="btn btn-primary mr-2" type="button" onClick="searchItem()">搜尋</button>
+			<button class="btn btn-primary" type="button" onClick="cleanSearch()">清除</button>
+            
+          </div>
+           
+            <div class="h20"></div>
+          
+          <!--  Item  -->
+          <button class="btn btn-primary" type="button" onclick="collapseAll()" data-toggle="collapse" data-target=".btn:hover +a+.collapse" aria-expanded="false">Item title</button>
+          <a href="#" class="badge badge-warning">shop</a>
+         
+          <div class="collapse item-main multi-collapse show">
+            <div class="h20"></div>
+            <div><!--table start-->
+            	<hr class="hr-table">
+               <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">1</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">asd</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">2</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">test</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">3</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">test</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">4</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">5</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">asd</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">6</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">7</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">8</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">9</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">10</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">11</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">12</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">13</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">14</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">15</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              
+              
+            </div>
+          </div>
+          <hr class="hr-White">
+          <!--  Item  end -->
+          
+          
+          <!--  Item  -->
+          <button class="btn btn-primary" type="button" onclick="collapseAll()" data-toggle="collapse" data-target=".btn:hover +a+.collapse" aria-expanded="false">Item title</button>
+          <a href="#" class="badge badge-warning">shop</a>
+         
+          <div class="collapse item-main multi-collapse show">
+            <div class="h20"></div>
+            <div><!--table start-->
+            	<hr class="hr-table">
+               <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">1</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">asd</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">2</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">test</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">3</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">test</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">4</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">5</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">asd</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">6</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">7</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">8</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">9</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">10</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">11</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">12</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">13</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">14</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">15</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              
+              
+            </div>
+          </div>
+          <hr class="hr-White">
+          <!--  Item  end -->
+          
+          <!--  Item  -->
+          <button class="btn btn-primary" type="button" onclick="collapseAll()" data-toggle="collapse" data-target=".btn:hover +a+.collapse" aria-expanded="false">Item title</button>
+          <a href="#" class="badge badge-warning">shop</a>
+         
+          <div class="collapse item-main multi-collapse show">
+            <div class="h20"></div>
+            <div><!--table start-->
+            	<hr class="hr-table">
+               <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">1</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">asd</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">2</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">test</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">3</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">test</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">4</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">5</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">asd</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">6</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">7</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">8</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">9</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">10</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">11</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">12</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">13</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">14</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              <div class="row collapse item-sub multi-collapse show">
+                    <div class="item-num col-6">15</div>
+                    <div class="col-6"><a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content="<img src='img/img-test-w.jpg' width='200'>">Toggle popover</a></div>
+                    <div class="col-12">
+                    	<hr class="hr-table">
+                    </div>
+               </div>
+              
+              
+            </div>
+          </div>
+          <hr class="hr-White">
+          <!--  Item  end -->
+          
+          
+
+        </div>
+        <div class="col"></div>
+      </div>
+    </div>
+  </div>
+  <!-- About page content ↓↓↓↓  -->
+  <div class="tab-pane fade" id="pills-about" role="tabpanel" aria-labelledby="pills-contact-tab">
+    <div class="container ">
+      <div class="h60"></div>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col-sm-12 col-md-8 col-lg-6"> 這是一個專為LINE貼圖打造的網頁</div>
+        <div class="col"></div>
+      </div>
+      <div class="h60"></div>
+    </div>
+  </div>
+  <!-- Page content end      --> 
+</div>
+
+<footer class="h60 d-flex align-items-center  justify-content-center">
+  <div class="footer-copyright small">© 2018 Copyright: <span class="text-info"> Clover.com</span> </div>
+</footer>
+
+<!-- Script ↓↓↓↓--> 
+<script src="js/mainJs.js"></script>
+<script src="js/canvas.js"></script>
+</body>
+</html>
