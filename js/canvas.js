@@ -4,8 +4,8 @@
 var canvas = document.getElementsByTagName("canvas").item(0);
 var context = canvas.getContext("2d");
 
-canvas.width =500; //document.body.getBoundingClientRect().width;//window.innerWidth;
-canvas.height = 500; //document.body.getBoundingClientRect().height;//window.innerHeight;
+canvas.width = document.body.getBoundingClientRect().width;//window.innerWidth;
+canvas.height = document.body.getBoundingClientRect().height;//window.innerHeight;
 
 context.globalCompositeOperation = 'lighter';
 
@@ -56,8 +56,6 @@ function Particle() {
 	this.x =Math.random() *canvas.width; //settings.startingX;
 	this.y = Math.random() *canvas.height;//settings.startingY;
 	
-	this.hoverAlpha = 1;
-	
 	// Determine original X-axis speed based on setting limitation
 	
 	this.size =  randomVal(settings.parMin,settings.parMax);
@@ -66,7 +64,7 @@ function Particle() {
 	this.h = settings.hsl_color_h[randomVal(-1,settings.hsl_color_h.length)];  //randomVal(0, 360);
 	this.s = 90;
 	this.l = 50;
-	this.a =( settings.parMax-this.size)/(settings.parMax-settings.parMin)*settings.maxAlpha;
+	this.a =( settings.parMax-this.size)/(settings.parMax-settings.parMin)*settings.maxAlpha/100;
 	
 	this.vx =Math.random() * 2 - 1;
 	this.vy =Math.random() * 2 - 1;
@@ -105,8 +103,8 @@ Particle.prototype.draw = function() {
 		trans=(this.maxLife-this.life)/(this.maxLife/4);
 	}
 	
-	
-	var hsl = 'hsl(122, 100%, 50%)';//'hsla(' +this.h  + ', ' + this.s + '%,  ' +this.l + '%,'+this.a*trans*this.hoverAlpha + '%)';
+			
+	var hsl = 'hsla(' +this.h  + ', ' + this.s + '%,  ' +this.l + '%,'+this.a*trans + ')';
 	// Create the shapes
 	context.clearRect(settings.leftWall, settings.groundLevel, canvas.width, canvas.height);
 	context.beginPath();
