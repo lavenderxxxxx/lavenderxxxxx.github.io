@@ -3,8 +3,8 @@ var ctx = c.getContext("2d");
 
 // Create gradient
 var grd = ctx.createLinearGradient(0, 0, 200, 0);
-grd.addColorStop(0, "red");
-grd.addColorStop(1, "white");
+grd.addColorStop(0, 'hsl(0, 100%, 50%)');
+grd.addColorStop(1, 'hsl(122, 100%, 50%)');
 
 // Fill with gradient
 ctx.fillStyle = grd;
