@@ -4,15 +4,15 @@
 var canvas = document.getElementsByTagName("canvas").item(0);
 var context = canvas.getContext("2d");
 
-canvas.width = document.body.getBoundingClientRect().width;//window.innerWidth;
-canvas.height = document.body.getBoundingClientRect().height;//window.innerHeight;
+canvas.width = window.innerWidth;//document.body.getBoundingClientRect().width;
+canvas.height =window.innerHeight;// document.body.getBoundingClientRect().height;
 
 context.globalCompositeOperation = 'lighter';
-
+console.log(canvas.height);
 var particles = {},
 	particleIndex = 0,
 	settings = {
-		density: 20,
+		density: 10,
 		parMin:20,
 		parMax: 100,		
 		startingX: canvas.width / 2,
@@ -21,7 +21,7 @@ var particles = {},
 		maxAlpha :100,
 		hsl_color_h :[5,45,136,217]
 	};
-
+settings.density = settings.density*(canvas.width*canvas.width/(1440*758));
 
 window.onload = function() {
 	"use strict";
@@ -46,7 +46,7 @@ window.onload = function() {
 	
 //numDisplay.innerHTML = particleIndex;
 	
-}, 30);
+}, 100/3);
 };
 
 // Set up a function to create multiple particles
