@@ -7,7 +7,7 @@ var context = canvas.getContext("2d");
 canvas.width =500; //document.body.getBoundingClientRect().width;//window.innerWidth;
 canvas.height = 500; //document.body.getBoundingClientRect().height;//window.innerHeight;
 
-context.globalCompositeOperation = 'lighter';
+//context.globalCompositeOperation = 'lighter';
 
 var particles = {},
 	particleIndex = 0,
