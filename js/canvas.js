@@ -106,7 +106,7 @@ Particle.prototype.draw = function() {
 	}
 	
 	
-	var hsl = 'hsla(' +this.h  + ', ' + this.s + '%,  ' +this.l + '%,'+this.a*trans*this.hoverAlpha + '%)';
+	var hsl = 'hsl(122, 100%, 50%)';//'hsla(' +this.h  + ', ' + this.s + '%,  ' +this.l + '%,'+this.a*trans*this.hoverAlpha + '%)';
 	// Create the shapes
 	context.clearRect(settings.leftWall, settings.groundLevel, canvas.width, canvas.height);
 	context.beginPath();
