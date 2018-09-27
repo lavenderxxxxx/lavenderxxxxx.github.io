@@ -4,8 +4,8 @@
 var canvas = document.getElementsByTagName("canvas").item(0);
 var context = canvas.getContext("2d");
 
-canvas.width = document.body.getBoundingClientRect().width;//window.innerWidth;
-canvas.height = document.body.getBoundingClientRect().height;//window.innerHeight;
+canvas.width =500; //document.body.getBoundingClientRect().width;//window.innerWidth;
+canvas.height = 500; //document.body.getBoundingClientRect().height;//window.innerHeight;
 
 context.globalCompositeOperation = 'lighter';
 
