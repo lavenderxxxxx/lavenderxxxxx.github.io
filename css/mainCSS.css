@@ -52,3 +52,9 @@ hr.hr-table{
 	position:fixed;
 	z-index:-1;
 }
+
+.contentArea{
+	background-color:#0008;
+	border-radius: 5px;
+	padding: 1em;
+}
