@@ -8,7 +8,6 @@ canvas.width = window.innerWidth;//document.body.getBoundingClientRect().width;
 canvas.height =window.innerHeight;// document.body.getBoundingClientRect().height;
 
 context.globalCompositeOperation = 'lighter';
-console.log(canvas.height);
 var particles = {},
 	particleIndex = 0,
 	settings = {
@@ -21,8 +20,8 @@ var particles = {},
 		maxAlpha :100,
 		hsl_color_h :[5,45,136,217]
 	};
-settings.density = settings.density*(canvas.width*canvas.width/(1440*758));
-
+settings.density = Math.floor(settings.density*(canvas.width*canvas.width/(1440*758)))+5;
+console.log(settings.density);
 window.onload = function() {
 	"use strict";
 	setInterval(function() {
