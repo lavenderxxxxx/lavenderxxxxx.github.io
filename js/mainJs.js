@@ -1,9 +1,43 @@
 // JavaScript Document
+$.ajax({url: "https://lavenderxxxxx.github.io/imgList.json", success: function(result){
+			var imgList = result;
+			console.log(imgList);
+			
+			for(var group = 0;group<imgList.length;group++){
+				var groupHtml= 	'<button class="btn btn-primary" type="button" onclick="collapseAll()" data-toggle="collapse" data-target=".btn:hover +a+.collapse" aria-expanded="false">'+
+								imgList[group][0]+
+								'</button> <a href='+
+								'"'+imgList[group][1]+'"'+
+								' class="badge badge-warning">shop</a>'+
+								'<div class="collapse item-main multi-collapse show">'+
+								'<div class="h20"></div>'+
+								'<div class="contentArea">'+
+								'<hr class="hr-table">';
+				for(var a = 2 ; a<imgList[group].length;a++){
+					groupHtml+='<div class="row collapse item-sub multi-collapse show">'+
+								'<div class="item-num col-6">'+a+'</div>'+
+								'<div class="col-6">'+
+								'<a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content='+
+								'"<img src=img/'+a+'.jpg width='+"'200'"+'>" >'+
+								imgList[group][a]+
+								'</a>'+
+								'</div>'+
+								'<div class="col-12">'+
+								'<hr class="hr-table">'+
+								'</div></div>'
+				}
+				groupHtml+='</div></div><hr class="hr-White">';
+				$('#tableGen').append(groupHtml);
+			}
+			console.log('ajax done');
+		}});
+
 
 var searchInput = document.getElementById('searchText');
 var allItems = document.getElementsByClassName('item-sub');
 
 $(document).ready(function(){
+	console.log("pop");
     $('[ data-toggle="popover"]').popover();   
 });
 
@@ -23,7 +57,7 @@ function searchItem(){
 }
 
 function itemShow(){
-
+	var result =0;
 	for(var i=0;i<allItems.length;i++){
 		var itemNameClass = allItems.item(i).getElementsByClassName('item-name');
 		var itemName ="";
@@ -32,9 +66,13 @@ function itemShow(){
 		}
 		if(itemName.indexOf(searchInput.value)>=0){
 			$(allItems.item(i)).collapse('show');
+			result++;
 		}else{
 			$(allItems.item(i)).collapse('hide');
 		}
+	}
+	if(result==0){
+		alert("找不到符合的結果");
 	}
 
 }
