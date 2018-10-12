@@ -1,7 +1,6 @@
 // JavaScript Document
 $.ajax({url: "https://lavenderxxxxx.github.io/imgList.json", success: function(result){
 			var imgList = result;
-			console.log(imgList);
 			
 			for(var group = 0;group<imgList.length;group++){
 				var groupHtml= 	'<button class="btn btn-primary" type="button" onclick="collapseAll()" data-toggle="collapse" data-target=".btn:hover +a+.collapse" aria-expanded="false">'+
@@ -29,17 +28,12 @@ $.ajax({url: "https://lavenderxxxxx.github.io/imgList.json", success: function(r
 				groupHtml+='</div></div><hr class="hr-White">';
 				$('#tableGen').append(groupHtml);
 			}
-			console.log('ajax done');
+			$('[ data-toggle="popover"]').popover();  
 		}});
 
 
 var searchInput = document.getElementById('searchText');
 var allItems = document.getElementsByClassName('item-sub');
-
-$(document).ready(function(){
-	console.log("pop");
-    $('[ data-toggle="popover"]').popover();   
-});
 
 function collapseAll(){
 	$('.collapse.item-main').collapse('hide');
