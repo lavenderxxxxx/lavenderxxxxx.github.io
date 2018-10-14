@@ -18,10 +18,10 @@ var particles = {},
 		startingY: canvas.height / 4,
 		gravity: 0,
 		maxAlpha :100,
-		hsl_color_h :[5,45,136,217]
+		hsl_color_h :[5,43,100,201,272]
 	};
 settings.density = Math.floor(settings.density*(canvas.width*canvas.width/(1440*758)))+5;
-console.log(settings.density);
+console.log("density: "+settings.density);
 window.onload = function() {
 	"use strict";
 	setInterval(function() {
