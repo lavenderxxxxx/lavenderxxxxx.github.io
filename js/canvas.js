@@ -11,17 +11,18 @@ context.globalCompositeOperation = 'lighter';
 var particles = {},
 	particleIndex = 0,
 	settings = {
-		density: 10,
-		parMin:20,
-		parMax: 100,		
+		density: 30,
+		maxCounts:500,
+		currentCounts:0,
+		parSizeMin:20,
+		parSizeMax: 100,		
 		startingX: canvas.width / 2,
 		startingY: canvas.height / 4,
 		gravity: 0,
 		maxAlpha :100,
 		hsl_color_h :[5,43,100,201,272]
 	};
-settings.density = Math.floor(settings.density*(canvas.width*canvas.width/(1440*758)))+5;
-console.log("density: "+settings.density);
+settings.maxCounts = Math.floor(canvas.width*canvas.height/(1920*890)*settings.maxCounts);
 window.onload = function() {
 	"use strict";
 	setInterval(function() {
@@ -30,16 +31,16 @@ window.onload = function() {
 	
 	// Draw the particles
 	for (var i = 0; i < settings.density; i++) {
-		if (Math.random() > 0.97) {
+		if (Math.random() > 0.97&&settings.currentCounts<settings.maxCounts) {
 		// Introducing a random chance of creating a particle
 		// corresponding to an chance of 1 per second,
 		// per "density" value
 		new Particle();
+		settings.currentCounts++;
 		}
 	}
 
 	for (var i in particles) {
-		
 	  particles[i].draw();
 	}
 	
@@ -57,13 +58,13 @@ function Particle() {
 	
 	// Determine original X-axis speed based on setting limitation
 	
-	this.size =  randomVal(settings.parMin,settings.parMax);
+	this.size =  randomVal(settings.parSizeMin,settings.parSizeMax);
 	
 	
 	this.h = settings.hsl_color_h[randomVal(-1,settings.hsl_color_h.length)];  //randomVal(0, 360);
-	this.s = 90;
+	this.s = 100;
 	this.l = 50;
-	this.a =( settings.parMax-this.size)/(settings.parMax-settings.parMin)*settings.maxAlpha/100;
+	this.a =( settings.parSizeMax-this.size)/(settings.parSizeMax-settings.parSizeMin)*settings.maxAlpha/100;
 	
 	this.vx =Math.random() * 2 - 1;
 	this.vy =Math.random() * 2 - 1;
@@ -92,6 +93,7 @@ Particle.prototype.draw = function() {
 	// If Particle is old, it goes in the chamber for renewal
 	if (this.life >= this.maxLife) {
 	  delete particles[this.id];
+	  settings.currentCounts--;
 	}
 	var trans =1;
 	if(this.life<this.maxLife/4)
