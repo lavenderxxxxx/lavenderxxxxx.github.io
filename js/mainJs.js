@@ -16,8 +16,8 @@ $.ajax({url: "https://lavenderxxxxx.github.io/imgList.json", success: function(r
 					groupHtml+='<div class="row collapse item-sub multi-collapse show">'+
 								'<div class="item-num col-6">'+(a-1)+'</div>'+
 								'<div class="col-6">'+
-								'<a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-html="true" data-content='+
-								'"<img src=img/'+a+'.jpg width='+"'200'"+'>" >'+
+								'<a class="item-name" tabindex="0" role="button" data-toggle="popover" data-placement="auto" data-trigger="focus" data-html="true" data-content='+
+								'"<img src=img/'+group+"-"+(a-1)+'.png width='+"'200'"+'>" >'+
 								imgList[group][a]+
 								'</a>'+
 								'</div>'+
