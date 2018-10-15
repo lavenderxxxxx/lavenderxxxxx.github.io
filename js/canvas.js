@@ -89,13 +89,17 @@ Particle.prototype.draw = function() {
 	
 	// Age the particle
 	this.life++;
-	
+	var trans =1;
 	// If Particle is old, it goes in the chamber for renewal
 	if (this.life >= this.maxLife) {
 	  delete particles[this.id];
 	  settings.currentCounts--;
 	}
-	var trans =1;
+
+	
+	// Determine whether to bounce the particle off a wall
+	
+	
 	if(this.life<this.maxLife/4)
 	{
 		trans=this.life/(this.maxLife/4);
@@ -107,7 +111,6 @@ Particle.prototype.draw = function() {
 			
 	var hsl = 'hsla(' +this.h  + ', ' + this.s + '%,  ' +this.l + '%,'+this.a*trans + ')';
 	// Create the shapes
-	context.clearRect(settings.leftWall, settings.groundLevel, canvas.width, canvas.height);
 	context.beginPath();
 	
 	context.fillStyle=hsl;//this.drawColor;
