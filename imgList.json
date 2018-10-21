@@ -43,10 +43,6 @@
       "color": "linkColor-b"
     },
     {
-      "name": "獲得稱號-北七",
-      "color": "linkColor-b"
-    },
-    {
       "name": "達成成就-吸貓貓?",
       "color": "linkColor-b"
     },
@@ -156,6 +152,10 @@
     },
     {
       "name": "獲得狀態-無言...",
+      "color": "linkColor-d"
+    },
+    {
+      "name": "獲得狀態-藍瘦香菇",
       "color": "linkColor-d"
     },
     {
