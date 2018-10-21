@@ -44,7 +44,7 @@ $.ajax({url: "https://lavenderxxxxx.github.io/imgList.json", success: function(r
 								'<div class="item-num col-4">'+(a-1)+'</div>'+
 								'<div class="col-8">'+
 								'<a class="item-name '+
-								'imgList[group][a]["color"]"'+
+								imgList[group][a]["color"]+'"'+
 								' tabindex="0" role="button" data-toggle="popover" data-placement="auto" data-trigger="focus" data-html="true" data-content='+
 								'"<img src=img/'+group+"-"+(a-1)+'.png width='+"'200'"+'>" >'+
 								imgList[group][a]["name"]+
