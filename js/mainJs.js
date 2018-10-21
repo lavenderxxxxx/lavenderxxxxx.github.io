@@ -1,7 +1,7 @@
 // JavaScript Document
 $.ajax({url: "https://lavenderxxxxx.github.io/imgList.json", success: function(result){
 			var imgList = result;
-			
+			/*
 			for(var group = 0;group<imgList.length;group++){
 				var groupHtml= 	'<button class="btn btn-primary" type="button" onclick="collapseAll()" data-toggle="collapse" data-target=".btn:hover +a+.collapse" aria-expanded="false">'+
 								imgList[group][0]+
@@ -28,6 +28,37 @@ $.ajax({url: "https://lavenderxxxxx.github.io/imgList.json", success: function(r
 				groupHtml+='</div></div><hr class="hr-White">';
 				$('#tableGen').append(groupHtml);
 			}
+*/
+			for(var group = 0;group<imgList.length;group++){
+				var groupHtml= 	'<button class="btn btn-primary" type="button" onclick="collapseAll()" data-toggle="collapse" data-target=".btn:hover +a+.collapse" aria-expanded="false">'+
+								imgList[group][0]+
+								'</button> <a href='+
+								'"'+imgList[group][1]+'"'+
+								' class="badge badge-warning">shop</a>'+
+								'<div class="collapse item-main multi-collapse show">'+
+								'<div class="h20"></div>'+
+								'<div class="contentArea">'+
+								'<hr class="hr-table">';
+				for(var a = 2 ; a<imgList[group].length;a++){
+					groupHtml+='<div class="row collapse item-sub multi-collapse show">'+
+								'<div class="item-num col-4">'+(a-1)+'</div>'+
+								'<div class="col-8">'+
+								'<a class="item-name '+
+								'imgList[group][a]["color"]"'+
+								' tabindex="0" role="button" data-toggle="popover" data-placement="auto" data-trigger="focus" data-html="true" data-content='+
+								'"<img src=img/'+group+"-"+(a-1)+'.png width='+"'200'"+'>" >'+
+								imgList[group][a]["name"]+
+								'</a>'+
+								'</div>'+
+								'<div class="col-12">'+
+								'<hr class="hr-table">'+
+								'</div></div>'
+				}
+				groupHtml+='</div></div><hr class="hr-White">';
+				$('#tableGen').append(groupHtml);
+			}
+
+
 			$('[ data-toggle="popover"]').popover();  
 		}});
 

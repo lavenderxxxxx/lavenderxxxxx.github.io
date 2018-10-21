@@ -64,3 +64,38 @@ hr.hr-table{
 .width100{
 	width: 100%;
 }
+
+.linkColor-a{
+	color: #FF1400;
+}
+.linkColor-a:hover{
+	color: rgb(255, 255, 255);
+}
+
+.linkColor-b{
+	color: #FFBF1A;
+}
+.linkColor-b:hover{
+	color: rgb(255, 255, 255);
+}
+
+.linkColor-c{
+	color: 63E522;
+}
+.linkColor-c:hover{
+	color: rgb(255, 255, 255);
+}
+
+.linkColor-d{
+	color: #26B3FF;
+}
+.linkColor-d:hover{
+	color: rgb(255, 255, 255);
+}
+
+.linkColor-e{
+	color: #8417E5;
+}
+.linkColor-e:hover{
+	color: rgb(255, 255, 255);
+}
